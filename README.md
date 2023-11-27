@@ -15,6 +15,11 @@ rake db:migrate
 rake db:seed
 ```
 
+Для запуска тестов используйте команду:
+```bash
+RAILS_ENV=test bundle exec rspec
+```
+
 ## Demo
 ![график курсов валют](https://github.com/badimalex/currency_tracker/blob/main/Screenshot%202023-11-27%20at%2015.56.38.png?raw=true)
 ![изменение цен](https://github.com/badimalex/currency_tracker/blob/main/Screenshot%202023-11-27%20at%2015.56.42.png?raw=true)

@@ -72,3 +72,12 @@ group :test do
 end
 
 gem 'whenever', require: false
+
+group :development, :test do
+  gem 'rspec-rails', '~> 5.0.0'
+end
+
+group :test do
+  gem 'webmock', '~> 3.0'
+  gem 'rails-controller-testing'
+end

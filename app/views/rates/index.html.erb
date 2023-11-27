@@ -12,7 +12,7 @@
     <% @weekly_rates.each do |currency, rates| %>
       <tr>
         <td><%= currency %></td>
-        <% rates.each do |rate| %>
+        <% rates.reverse_each do |rate| %>
           <td><%= rate %></td>
         <% end %>
       </tr>

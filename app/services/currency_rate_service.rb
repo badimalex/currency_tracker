@@ -9,16 +9,22 @@ class CurrencyRateService
     rates
   end
 
+  private
+
   def self.last_four_weeks_rates(currency)
     (1..4).map do |weeks_ago|
       start_date = weeks_ago.weeks.ago.beginning_of_week
       end_date = weeks_ago.weeks.ago.end_of_week
 
-      start_rate = CurrencyRate.where(currency: currency, date: start_date).first
-      end_rate = CurrencyRate.where(currency: currency, date: end_date).first
+      start_rate = find_rate_for_date(currency, start_date)
+      end_rate = find_rate_for_date(currency, end_date)
 
       calculate_rate_change(start_rate, end_rate)
     end
+  end
+
+  def self.find_rate_for_date(currency, date)
+    CurrencyRate.where(currency: currency, date: date).first
   end
 
   def self.calculate_rate_change(start_rate, end_rate)
@@ -30,10 +36,10 @@ class CurrencyRateService
     change = end_value - start_value
     percentage_change = (change / start_value) * 100
 
-    format_change(percentage_change)
+    format_change(percentage_change, start_value)
   end
 
-  def self.format_change(percentage_change)
-    format('%.2f₽ (%+.2f%%)', percentage_change.abs, percentage_change)
+  def self.format_change(percentage_change, start_value)
+    format('%.2f₽ (%+.2f%%)', start_value, percentage_change)
   end
 end
