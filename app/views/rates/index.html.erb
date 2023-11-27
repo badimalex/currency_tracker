@@ -1,0 +1,21 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Валюта</th>
+      <th>4 недели назад</th>
+      <th>3 недели назад</th>
+      <th>2 недели назад</th>
+      <th>Прошлая неделя</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @weekly_rates.each do |currency, rates| %>
+      <tr>
+        <td><%= currency %></td>
+        <% rates.each do |rate| %>
+          <td><%= rate %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

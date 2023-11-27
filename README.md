@@ -1,24 +1,12 @@
-# README
+# Currency Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Это приложение Ruby on Rails, которое отслеживает курсы валют с сайта Центробанка РФ.
 
-Things you may want to cover:
+## Установка
 
-* Ruby version
+Убедитесь, что у вас установлены Ruby 3.2.2, Rails 7+ и PostgreSQL. Клонируйте репозиторий и установите зависимости:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+git clone [ссылка на ваш репозиторий]
+cd currency_tracker
+bundle install

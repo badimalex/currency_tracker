@@ -1,0 +1,28 @@
+<!-- app/views/charts/index.html.erb -->
+<div id="chart"></div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var chart = c3.generate({
+      bindto: '#chart',
+      data: {
+        x: 'x',
+        columns: [
+          ['x'].concat(<%= (1.month.ago.to_date..Date.today).map(&:to_s).to_json.html_safe %>),
+          <% ['USD', 'EUR', 'CNY'].each do |currency| %>
+            ['<%= currency %>'].concat(<%= @data[currency].map(&:value).map(&:to_f).to_json.html_safe %>),
+          <% end %>
+        ]
+      },
+      axis: {
+        x: {
+          type: 'timeseries',
+          tick: {
+            format: '%Y-%m-%d'
+          }
+        }
+      }
+    });
+
+  });
+</script>
